@@ -20,6 +20,7 @@
 body{margin:0;background:#FFFFFF}
 a{color:#0B2251}a:hover{color:#0093AD}
 html{scroll-behavior:smooth}
+@media (max-width: 1199px){.flota-xl{display:none !important}}
 @media (max-width: 860px){.flota{display:none !important}.navlinks{display:none !important}}
 .ok1{animation:ok1 26s ease-out infinite}
 @keyframes ok1{0%,25.9%{opacity:0;transform:scale(.4)}27%,90%{opacity:1;transform:scale(1)}93%,100%{opacity:0;transform:scale(1)}}
@@ -138,18 +139,6 @@ img{max-width:100%}
       </svg>
     </div>
 
-    <!-- nodo decorativo izquierda (reemplaza la flecha manuscrita) -->
-    <div class="flota" aria-hidden="true" style="position: absolute; left: 70px; top: 40px; display: flex; align-items: center; gap: 12px">
-      <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; line-height: 20px; text-align: right">Todo en<br>un solo lugar</span>
-      <svg width="110" height="90" viewBox="0 0 110 90" fill="none"><path d="M4 10h50c12 0 20 8 20 20v40" stroke="#00D2EF" stroke-width="3" stroke-linecap="round"/><circle cx="74" cy="78" r="7" fill="#00D2EF"/></svg>
-    </div>
-
-    <!-- nodo decorativo derecha -->
-    <div class="flota" aria-hidden="true" style="position: absolute; right: 70px; top: 20px; display: flex; align-items: center; gap: 12px; flex-direction: row-reverse">
-      <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; line-height: 20px">Crece con<br>tu empresa</span>
-      <svg width="110" height="110" viewBox="0 0 110 110" fill="none"><path d="M106 10H56c-12 0-20 8-20 20v60" stroke="#00D2EF" stroke-width="3" stroke-linecap="round"/><circle cx="36" cy="98" r="7" fill="#00D2EF"/></svg>
-    </div>
-
     <!-- Ventana del sistema (ilustrativa) -->
     <figure aria-label="Ilustración de un sistema de gestión con reporte de ventas" style="position: relative; max-width: 900px; margin: 0 auto; padding: 0 0 72px">
       <div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 30px 70px rgba(11,34,81,0.22); overflow: hidden; font-family: Inter, system-ui, sans-serif">
@@ -212,7 +201,7 @@ img{max-width:100%}
       </div>
 
       <!-- tarjeta flotante izquierda -->
-      <div class="flota" style="position: absolute; left: -130px; top: 300px; width: 250px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.16); padding: 18px; display: flex; flex-direction: column; gap: 12px">
+      <div class="flota flota-xl" style="position: absolute; left: -120px; bottom: 110px; width: 240px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.16); padding: 18px; display: flex; flex-direction: column; gap: 12px">
         <div style="display: flex; align-items: center; justify-content: space-between">
           <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251">Nueva venta</span>
           <span style="font-size: 11px; font-weight: 600; color: #0B2251; background: #F3F6FA; border-radius: 8px; padding: 3px 8px">Caja 1</span>
@@ -228,7 +217,7 @@ img{max-width:100%}
       </div>
 
       <!-- tarjeta flotante derecha -->
-      <div class="flota" style="position: absolute; right: -130px; top: 160px; width: 250px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.16); padding: 18px; display: flex; flex-direction: column; gap: 14px">
+      <div class="flota flota-xl" style="position: absolute; right: -120px; top: -118px; width: 230px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.16); padding: 18px; display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251">Stock</span>
         <div style="display: flex; align-items: center; gap: 14px">
           <div style="position: relative; width: 74px; height: 80px; flex: none">
