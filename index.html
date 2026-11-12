@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japo Dev · Desarrollo de software a medida</title>
+<meta name="description" content="Desarrollo de software a medida para empresas en Paraguay: ERP, e-commerce, punto de venta, CRM, RRHH y sistemas para veterinarias.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&amp;display=swap" rel="stylesheet">
+<style>
+
+.marco{--s:.55;--t:1100px;--fw:704px;--fh:440px;--dw:300px;--ax:308px;--bx:1235px;--by:1749px}
+.tienda{transform-origin:top left;animation:tiendaScroll 26s ease-in-out infinite}
+@keyframes tiendaScroll{0%,8%{transform:scale(var(--s)) translateY(0)}21%,90%{transform:scale(var(--s)) translateY(calc(-1 * var(--t)))}97%,100%{transform:scale(var(--s)) translateY(0)}}
+.cursor{animation:cursorMove 26s ease-in-out infinite}
+@keyframes cursorMove{0%,20%{opacity:0;transform:translate(calc(var(--fw) * .8),calc(var(--fh) * .9)) scale(1)}22%{opacity:1;transform:translate(calc(var(--fw) * .8),calc(var(--fh) * .9)) scale(1)}25%{transform:translate(calc(var(--s) * var(--ax) - 2px),calc((var(--by) - var(--t)) * var(--s) - 2px)) scale(1)}26%{transform:translate(calc(var(--s) * var(--ax) - 2px),calc((var(--by) - var(--t)) * var(--s) - 2px)) scale(.8)}27%{transform:translate(calc(var(--s) * var(--ax) - 2px),calc((var(--by) - var(--t)) * var(--s) - 2px)) scale(1)}31%{transform:translate(calc(var(--s) * var(--bx) - 2px),calc((var(--by) - var(--t)) * var(--s) - 2px)) scale(1)}32%{transform:translate(calc(var(--s) * var(--bx) - 2px),calc((var(--by) - var(--t)) * var(--s) - 2px)) scale(.8)}33%,37%{transform:translate(calc(var(--s) * var(--bx) - 2px),calc((var(--by) - var(--t)) * var(--s) - 2px)) scale(1)}44%{transform:translate(calc(var(--fw) - var(--dw) / 2),calc(var(--fh) - 38px)) scale(1)}46%{transform:translate(calc(var(--fw) - var(--dw) / 2),calc(var(--fh) - 38px)) scale(.8)}47%{transform:translate(calc(var(--fw) - var(--dw) / 2),calc(var(--fh) - 38px)) scale(1)}52%{opacity:1;transform:translate(calc(var(--fw) - var(--dw) / 2),calc(var(--fh) - 38px)) scale(1)}54%,100%{opacity:0;transform:translate(calc(var(--fw) - var(--dw) / 2),calc(var(--fh) - 38px)) scale(1)}}
+
+body{margin:0;background:#FFFFFF}
+a{color:#0B2251}a:hover{color:#0093AD}
+html{scroll-behavior:smooth}
+@media (max-width: 860px){.flota{display:none !important}.navlinks{display:none !important}}
+.ok1{animation:ok1 26s ease-out infinite}
+@keyframes ok1{0%,25.9%{opacity:0;transform:scale(.4)}27%,90%{opacity:1;transform:scale(1)}93%,100%{opacity:0;transform:scale(1)}}
+.ok2{animation:ok2 26s ease-out infinite}
+@keyframes ok2{0%,31.9%{opacity:0;transform:scale(.4)}33%,90%{opacity:1;transform:scale(1)}93%,100%{opacity:0;transform:scale(1)}}
+.toast1{animation:toast1 26s ease-in-out infinite}
+@keyframes toast1{0%,26%{opacity:0;transform:translate(-50%,-12px)}27.5%,30%{opacity:1;transform:translate(-50%,0)}31.5%,100%{opacity:0;transform:translate(-50%,-12px)}}
+.toast2{animation:toast2 26s ease-in-out infinite}
+@keyframes toast2{0%,32%{opacity:0;transform:translate(-50%,-12px)}33.5%,36%{opacity:1;transform:translate(-50%,0)}37.5%,100%{opacity:0;transform:translate(-50%,-12px)}}
+.velo{animation:velo 26s ease-in-out infinite}
+@keyframes velo{0%,37%{opacity:0}40%,90%{opacity:1}94%,100%{opacity:0}}
+.carrito{animation:carrito 26s ease-in-out infinite}
+@keyframes carrito{0%,37%{transform:translateX(105%)}41%,90%{transform:translateX(0)}94%,100%{transform:translateX(105%)}}
+.cargando{animation:cargando 26s linear infinite}
+@keyframes cargando{0%,47%{opacity:0}48%,53%{opacity:1}54%,100%{opacity:0}}
+.giro{animation:giro .8s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+.gracias{animation:gracias 26s ease-in-out infinite}
+@keyframes gracias{0%,53%{opacity:0;transform:scale(.96)}56%,90%{opacity:1;transform:scale(1)}94%,100%{opacity:0;transform:scale(1)}}
+.pedido{animation:pedidoPop 26s ease-in-out infinite}
+@keyframes pedidoPop{0%,57%{opacity:0;transform:translateY(16px)}60%,89%{opacity:1;transform:translateY(0)}93%,100%{opacity:0;transform:translateY(16px)}}
+.paso1{animation:paso1 26s step-end infinite}
+@keyframes paso1{0%{background:#0B2251;color:#FFFFFF}24%{background:#FFFFFF;color:#5B6577}}
+.paso2{animation:paso2 26s step-end infinite}
+@keyframes paso2{0%{background:#FFFFFF;color:#5B6577}24%{background:#0B2251;color:#FFFFFF}44%{background:#FFFFFF;color:#5B6577}}
+.paso3{animation:paso3 26s step-end infinite}
+@keyframes paso3{0%{background:#FFFFFF;color:#5B6577}44%{background:#0B2251;color:#FFFFFF}92%{background:#FFFFFF;color:#5B6577}}
+
+@media (prefers-reduced-motion: reduce){.cursor{opacity:0}.tienda,.cursor,.ok1,.ok2,.toast1,.toast2,.velo,.carrito,.cargando,.gracias,.pedido,.paso1,.paso2,.paso3{animation:none}.tienda{transform:scale(var(--s))}.pedido{opacity:1}.cursor,.ok1,.ok2,.toast1,.toast2,.cargando,.gracias,.velo{opacity:0}.carrito{transform:translateX(105%)}}
+
+@media (max-width: 760px){
+ .appbar{gap:10px !important;padding:10px 12px !important}
+ .applogo{width:auto !important;flex:1 !important}
+ .solo-desk,.sucursal{display:none !important}
+ .pad-m{padding:24px !important;border-radius:22px !important}
+ .pad-m div[style*="padding: 18px; display: flex; align-items: center; gap: 12px"]{padding:12px !important;gap:8px !important;font-size:13px !important}
+ section > div[style*="padding: 96px 24px"], section[style*="padding: 96px 24px"]{padding-top:64px !important;padding-bottom:64px !important}
+ #sistemas{padding-top:48px !important;padding-bottom:64px !important}
+ .marco{height:380px !important}
+ .carrito{padding:12px 14px !important}
+ .gracias span[style*="font-size: 40px"]{font-size:30px !important}
+}
+
+
+img{max-width:100%}
+</style>
+</head>
+<body>
+<div style="font-family: Inter, system-ui, sans-serif; color: #0B2251; background: #FFFFFF; overflow: hidden">
+
+<!-- ============ HERO (fondo niebla) ============ -->
+<header style="position: relative; background: #F3F6FA; padding: 20px 0 0">
+
+  <!-- patrón de hexágonos, esquina superior derecha -->
+  <svg aria-hidden="true" width="360" height="300" viewBox="0 0 360 300" style="position: absolute; top: 70px; right: -40px; opacity: 0.55">
+    <g fill="none" stroke="#DCE3EC" stroke-width="2" stroke-linejoin="round">
+      <path d="M60 10l40 23v46l-40 23-40-23V33z"/>
+      <path d="M140 10l40 23v46l-40 23-40-23V33z"/>
+      <path d="M220 10l40 23v46l-40 23-40-23V33z"/>
+      <path d="M300 10l40 23v46l-40 23-40-23V33z"/>
+      <path d="M100 79l40 23v46l-40 23-40-23v-46z"/>
+      <path d="M180 79l40 23v46l-40 23-40-23v-46z"/>
+      <path d="M260 79l40 23v46l-40 23-40-23v-46z"/>
+      <path d="M220 148l40 23v46l-40 23-40-23v-46z"/>
+      <path d="M300 148l40 23v46l-40 23-40-23v-46z"/>
+    </g>
+  </svg>
+
+  <!-- Menú flotante -->
+  <nav aria-label="Principal" style="position: relative; max-width: 1180px; margin: 0 auto; padding: 0 24px; box-sizing: border-box">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 999px; padding: 10px 10px 10px 24px; box-shadow: 0 8px 30px rgba(11,34,81,0.06)">
+      <a href="#inicio" aria-label="Japo Dev, inicio" style="display: flex; align-items: center"><img src="img/logo.png" alt="Japo Dev" style="height: 40px; width: auto; display: block"></a>
+      <div class="navlinks" style="display: flex; align-items: center; gap: 32px; font-size: 15px; font-weight: 500">
+        <a href="#sistemas" style="color: #0B2251; text-decoration: none">Sistemas</a>
+        <a href="#como" style="color: #0B2251; text-decoration: none">Cómo trabajamos</a>
+        <a href="#preguntas" style="color: #0B2251; text-decoration: none">Preguntas</a>
+        <a href="#contacto" style="color: #0B2251; text-decoration: none">Contacto</a>
+      </div>
+      <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #0B2251; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; padding: 12px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        Hablemos
+      </a>
+    </div>
+  </nav>
+
+  <!-- Título central -->
+  <div id="inicio" style="position: relative; max-width: 880px; margin: 0 auto; padding: 72px 24px 0; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px">
+    <div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 999px; padding: 8px 16px 8px 10px; font-size: 14px; font-weight: 600; color: #0B2251">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: #0B2251">
+        <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+      </span>
+      Desarrollo de software a medida
+    </div>
+    <h1 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(38px, 6vw, 68px); line-height: 1.06; letter-spacing: -0.02em; color: #0B2251">El sistema que tu empresa necesita, <span style="color: #0093AD">hecho a tu medida.</span></h1>
+    <p style="margin: 0; max-width: 620px; font-size: 19px; line-height: 30px; color: #5B6577">Desarrollamos software de gestión pensado según cómo trabajás, para que tengas toda tu información ordenada en un solo lugar.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding-top: 4px">
+      <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: #00D2EF; color: #0B2251; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 999px; min-height: 52px; box-sizing: border-box; box-shadow: 0 10px 24px rgba(0,147,173,0.25)">
+        Contanos tu proyecto
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#sistemas" style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; color: #0B2251; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 26px; border-radius: 999px; border: 1px solid #DCE3EC; min-height: 52px; box-sizing: border-box">Ver sistemas</a>
+    </div>
+  </div>
+
+  <!-- Composición: panel + tarjetas flotantes sobre bloque marino -->
+  <div style="position: relative; max-width: 1180px; margin: 64px auto 0; padding: 0 24px 0; box-sizing: border-box">
+    <!-- bloque marino detrás -->
+    <div aria-hidden="true" style="position: absolute; left: 24px; right: 24px; top: 150px; bottom: 0; background: #0B2251; border-radius: 28px 28px 0 0; overflow: hidden">
+      <svg width="420" height="320" viewBox="0 0 420 320" style="position: absolute; left: -60px; bottom: -40px; opacity: 0.5">
+        <g fill="none" stroke="#24407A" stroke-width="2" stroke-linejoin="round">
+          <path d="M70 20l50 29v58l-50 29-50-29V49z"/>
+          <path d="M170 20l50 29v58l-50 29-50-29V49z"/>
+          <path d="M120 107l50 29v58l-50 29-50-29v-58z"/>
+          <path d="M220 107l50 29v58l-50 29-50-29v-58z"/>
+          <path d="M170 194l50 29v58l-50 29-50-29v-58z"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- nodo decorativo izquierda (reemplaza la flecha manuscrita) -->
+    <div class="flota" aria-hidden="true" style="position: absolute; left: 70px; top: 40px; display: flex; align-items: center; gap: 12px">
+      <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; line-height: 20px; text-align: right">Todo en<br>un solo lugar</span>
+      <svg width="110" height="90" viewBox="0 0 110 90" fill="none"><path d="M4 10h50c12 0 20 8 20 20v40" stroke="#00D2EF" stroke-width="3" stroke-linecap="round"/><circle cx="74" cy="78" r="7" fill="#00D2EF"/></svg>
+    </div>
+
+    <!-- nodo decorativo derecha -->
+    <div class="flota" aria-hidden="true" style="position: absolute; right: 70px; top: 20px; display: flex; align-items: center; gap: 12px; flex-direction: row-reverse">
+      <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; line-height: 20px">Crece con<br>tu empresa</span>
+      <svg width="110" height="110" viewBox="0 0 110 110" fill="none"><path d="M106 10H56c-12 0-20 8-20 20v60" stroke="#00D2EF" stroke-width="3" stroke-linecap="round"/><circle cx="36" cy="98" r="7" fill="#00D2EF"/></svg>
+    </div>
+
+    <!-- Ventana del sistema (ilustrativa) -->
+    <figure aria-label="Ilustración de un sistema de gestión con reporte de ventas" style="position: relative; max-width: 900px; margin: 0 auto; padding: 0 0 72px">
+      <div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 30px 70px rgba(11,34,81,0.22); overflow: hidden; font-family: Inter, system-ui, sans-serif">
+        <!-- barra de ventana -->
+        <div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid #DCE3EC; background: #F7F9FC">
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #DCE3EC"></span>
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #DCE3EC"></span>
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #DCE3EC"></span>
+          <span style="margin-left: 10px; font-size: 12px; font-weight: 500; color: #5B6577">Japo Dev · Sistema de gestión</span>
+        </div>
+        <!-- barra superior de la app -->
+        <div class="appbar" style="display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-bottom: 1px solid #DCE3EC">
+          <div class="applogo" style="display: flex; align-items: center; gap: 8px; flex: none; width: 152px">
+            <svg aria-hidden="true" width="20" height="22" viewBox="0 0 52 56" fill="none" stroke="#00D2EF" stroke-width="6" stroke-linejoin="round"><path d="M26 4l21 12v24L26 52 5 40V16z"/></svg>
+            <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 15px; color: #0B2251">Japo <span style="font-weight: 600; color: #0093AD">Dev</span></span>
+          </div>
+          <div class="solo-desk" style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; border: 1px solid #DCE3EC; border-radius: 8px; padding: 7px 10px; font-size: 12px; color: #5B6577; white-space: nowrap; overflow: hidden">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            Buscar cliente, producto o comprobante
+          </div>
+          <span class="sucursal" style="flex: none; font-size: 12px; font-weight: 500; color: #0B2251; white-space: nowrap">Sucursal Central ▾</span>
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 999px; background: #0B2251; color: #FFFFFF; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">AD</span>
+        </div>
+        <div style="display: flex">
+          <!-- menú lateral -->
+          <div class="flota" style="flex: none; width: 168px; box-sizing: border-box; border-right: 1px solid #DCE3EC; padding: 12px 8px; display: flex; flex-direction: column; gap: 2px">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #5B6577; font-weight: 500"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div><div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #5B6577; font-weight: 500"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Ventas</div><div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #5B6577; font-weight: 500"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Compras</div><div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #5B6577; font-weight: 500"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>Stock</div><div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #5B6577; font-weight: 500"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Clientes</div><div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; background: #F3F6FA; color: #0B2251; font-weight: 600; box-shadow: inset 3px 0 0 #00D2EF"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>Reportes</div><div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #5B6577; font-weight: 500"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Configuración</div>
+          </div>
+          <!-- reporte -->
+          <div style="flex: 1 1 auto; min-width: 0; padding: 16px; background: #F7F9FC; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px">
+              <div>
+                <div style="font-size: 16px; font-weight: 700; color: #0B2251">Reporte de ventas</div>
+                <div style="font-size: 11px; color: #5B6577">Sucursal Central · Todas las cajas</div>
+              </div>
+              <div style="display: flex; gap: 8px">
+                <span style="font-size: 12px; color: #0B2251; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 8px; padding: 6px 10px; font-variant-numeric: tabular-nums">01/11/2026 – 11/11/2026</span>
+                <span style="font-size: 12px; font-weight: 600; color: #FFFFFF; background: #0B2251; border-radius: 8px; padding: 6px 12px">Exportar</span>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr)); gap: 10px"><div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 11px; font-weight: 500; color: #5B6577">Ventas del período</span><span style="font-size: 17px; font-weight: 700; color: #0B2251; font-variant-numeric: tabular-nums">₲ 48.520.000</span><span style="font-size: 11px; color: #0B7A55">+8,4% vs. octubre</span></div><div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 11px; font-weight: 500; color: #5B6577">Comprobantes</span><span style="font-size: 17px; font-weight: 700; color: #0B2251; font-variant-numeric: tabular-nums">312</span><span style="font-size: 11px; color: #5B6577">11 días</span></div><div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 11px; font-weight: 500; color: #5B6577">Ticket promedio</span><span style="font-size: 17px; font-weight: 700; color: #0B2251; font-variant-numeric: tabular-nums">₲ 155.500</span><span style="font-size: 11px; color: #5B6577">por comprobante</span></div><div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 11px; font-weight: 500; color: #5B6577">Cobros pendientes</span><span style="font-size: 17px; font-weight: 700; color: #0B2251; font-variant-numeric: tabular-nums">₲ 3.240.000</span><span style="font-size: 11px; color: #5B6577">1 factura</span></div></div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px">
+              <div style="flex: 2 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; padding: 12px 14px">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px"><span style="font-weight: 600; color: #0B2251">Ventas diarias</span><span style="color: #5B6577">Noviembre · en millones de ₲</span></div>
+                <svg role="img" aria-label="Gráfico de barras de ventas diarias del 1 al 11 de noviembre" viewBox="0 0 450 162" style="width: 100%; height: auto; display: block"><line x1="40" y1="140" x2="446" y2="140" stroke="#E6EBF2" stroke-width="1"/><text x="32" y="144" text-anchor="end" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">0M</text><line x1="40" y1="100" x2="446" y2="100" stroke="#E6EBF2" stroke-width="1"/><text x="32" y="104" text-anchor="end" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">2M</text><line x1="40" y1="60" x2="446" y2="60" stroke="#E6EBF2" stroke-width="1"/><text x="32" y="64" text-anchor="end" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">4M</text><line x1="40" y1="20" x2="446" y2="20" stroke="#E6EBF2" stroke-width="1"/><text x="32" y="24" text-anchor="end" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">6M</text><rect x="48.5" y="102.0" width="20" height="38.0" rx="3" fill="#0B2251"/><text x="58.5" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">1</text><rect x="85.4" y="48.0" width="20" height="92.0" rx="3" fill="#0B2251"/><text x="95.4" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">2</text><rect x="122.3" y="38.0" width="20" height="102.0" rx="3" fill="#0B2251"/><text x="132.3" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">3</text><rect x="159.2" y="44.0" width="20" height="96.0" rx="3" fill="#0B2251"/><text x="169.2" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">4</text><rect x="196.1" y="32.0" width="20" height="108.0" rx="3" fill="#0B2251"/><text x="206.1" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">5</text><rect x="233.0" y="22.0" width="20" height="118.0" rx="3" fill="#0B2251"/><text x="243.0" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">6</text><rect x="269.9" y="56.0" width="20" height="84.0" rx="3" fill="#0B2251"/><text x="279.9" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">7</text><rect x="306.8" y="100.0" width="20" height="40.0" rx="3" fill="#0B2251"/><text x="316.8" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">8</text><rect x="343.7" y="34.0" width="20" height="106.0" rx="3" fill="#0B2251"/><text x="353.7" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">9</text><rect x="380.6" y="28.0" width="20" height="112.0" rx="3" fill="#0B2251"/><text x="390.6" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">10</text><rect x="417.5" y="65.6" width="20" height="74.4" rx="3" fill="#00D2EF"/><text x="427.5" y="156" text-anchor="middle" font-size="10" fill="#5B6577" font-family="Inter, sans-serif">11</text></svg>
+              </div>
+              <div style="flex: 1 1 170px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 12px">
+                <span style="font-size: 12px; font-weight: 600; color: #0B2251">Ventas por canal</span>
+                <div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 12px; color: #0B2251"><span>Local</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">58%</span></div><div style="height: 6px; border-radius: 999px; background: #EEF2F7"><div style="width: 58%; height: 100%; border-radius: 999px; background: #0B2251"></div></div></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 12px; color: #0B2251"><span>WhatsApp</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">27%</span></div><div style="height: 6px; border-radius: 999px; background: #EEF2F7"><div style="width: 27%; height: 100%; border-radius: 999px; background: #0B2251"></div></div></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 12px; color: #0B2251"><span>Tienda online</span><span style="font-weight: 600; font-variant-numeric: tabular-nums">15%</span></div><div style="height: 6px; border-radius: 999px; background: #EEF2F7"><div style="width: 15%; height: 100%; border-radius: 999px; background: #0B2251"></div></div></div>
+              </div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 10px; overflow-x: auto">
+              <table style="width: 100%; border-collapse: collapse; font-size: 12px; white-space: nowrap">
+                <thead><tr style="background: #F7F9FC"><th style="text-align: left; padding: 8px 12px; font-weight: 600; color: #5B6577">Comprobante</th><th style="text-align: left; padding: 8px 12px; font-weight: 600; color: #5B6577">Cliente</th><th style="text-align: left; padding: 8px 12px; font-weight: 600; color: #5B6577">Fecha</th><th style="text-align: left; padding: 8px 12px; font-weight: 600; color: #5B6577">Estado</th><th style="text-align: right; padding: 8px 12px; font-weight: 600; color: #5B6577">Total</th></tr></thead>
+                <tbody><tr style="border-top: 1px solid #EEF2F7"><td style="padding: 9px 12px; font-variant-numeric: tabular-nums; color: #5B6577">001-001-0004512</td><td style="padding: 9px 12px; color: #0B2251; font-weight: 500">Comercial La Unión</td><td style="padding: 9px 12px; color: #5B6577">11/11</td><td style="padding: 9px 12px"><span style="background: #E3F4EC; color: #0B6B4A; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 3px 8px">Pagado</span></td><td style="padding: 9px 12px; text-align: right; font-weight: 600; color: #0B2251; font-variant-numeric: tabular-nums">₲ 1.250.000</td></tr><tr style="border-top: 1px solid #EEF2F7"><td style="padding: 9px 12px; font-variant-numeric: tabular-nums; color: #5B6577">001-001-0004511</td><td style="padding: 9px 12px; color: #0B2251; font-weight: 500">Consumidor final</td><td style="padding: 9px 12px; color: #5B6577">11/11</td><td style="padding: 9px 12px"><span style="background: #E3F4EC; color: #0B6B4A; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 3px 8px">Pagado</span></td><td style="padding: 9px 12px; text-align: right; font-weight: 600; color: #0B2251; font-variant-numeric: tabular-nums">₲ 185.000</td></tr><tr style="border-top: 1px solid #EEF2F7"><td style="padding: 9px 12px; font-variant-numeric: tabular-nums; color: #5B6577">001-001-0004510</td><td style="padding: 9px 12px; color: #0B2251; font-weight: 500">Distribuidora Central</td><td style="padding: 9px 12px; color: #5B6577">10/11</td><td style="padding: 9px 12px"><span style="background: #FFF1DC; color: #8A5300; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 3px 8px">Pendiente</span></td><td style="padding: 9px 12px; text-align: right; font-weight: 600; color: #0B2251; font-variant-numeric: tabular-nums">₲ 3.240.000</td></tr><tr style="border-top: 1px solid #EEF2F7"><td style="padding: 9px 12px; font-variant-numeric: tabular-nums; color: #5B6577">001-001-0004509</td><td style="padding: 9px 12px; color: #0B2251; font-weight: 500">Agroveterinaria El Trébol</td><td style="padding: 9px 12px; color: #5B6577">10/11</td><td style="padding: 9px 12px"><span style="background: #E3F4EC; color: #0B6B4A; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 3px 8px">Pagado</span></td><td style="padding: 9px 12px; text-align: right; font-weight: 600; color: #0B2251; font-variant-numeric: tabular-nums">₲ 640.000</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- tarjeta flotante izquierda -->
+      <div class="flota" style="position: absolute; left: -130px; top: 300px; width: 250px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.16); padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251">Nueva venta</span>
+          <span style="font-size: 11px; font-weight: 600; color: #0B2251; background: #F3F6FA; border-radius: 8px; padding: 3px 8px">Caja 1</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: #5B6577"><span>Producto A × 2</span><span>₲ 240.000</span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: #5B6577"><span>Producto B × 1</span><span>₲ 150.000</span></div>
+        <div style="height: 1px; background: #DCE3EC"></div>
+        <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #0B2251"><span>Total</span><span>₲ 390.000</span></div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #0B2251; color: #FFFFFF; border-radius: 10px; padding: 9px 12px; font-size: 13px; font-weight: 600">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Venta confirmada
+        </div>
+      </div>
+
+      <!-- tarjeta flotante derecha -->
+      <div class="flota" style="position: absolute; right: -130px; top: 160px; width: 250px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.16); padding: 18px; display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251">Stock</span>
+        <div style="display: flex; align-items: center; gap: 14px">
+          <div style="position: relative; width: 74px; height: 80px; flex: none">
+            <svg aria-hidden="true" width="74" height="80" viewBox="0 0 52 56" fill="none" stroke-linejoin="round"><path d="M26 4l21 12v24L26 52 5 40V16z" stroke="#DCE3EC" stroke-width="4"/><path d="M26 4l21 12v24L26 52 5 40" stroke="#00D2EF" stroke-width="4" stroke-linecap="round"/></svg>
+            <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 16px; color: #0B2251">94%</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px">
+            <span style="font-size: 14px; font-weight: 600; color: #0B2251">Al día</span>
+            <span style="font-size: 12px; line-height: 17px; color: #5B6577">3 productos por reponer</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; border-top: 1px solid #DCE3EC; padding-top: 12px">
+          <span style="width: 32px; height: 32px; border-radius: 999px; background: #0B2251; color: #00D2EF; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none">MG</span>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13px; font-weight: 600; color: #0B2251">Nuevo cliente</span>
+            <span style="font-size: 12px; color: #5B6577">vía WhatsApp</span>
+          </div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</header>
+
+<!-- ============ FRANJA DE VALORES ============ -->
+<section aria-label="Por qué Japo Dev" style="max-width: 1180px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 24px">
+    <div style="display: flex; align-items: flex-start; gap: 14px">
+      <div style="position: relative; width: 48px; height: 52px; flex: none">
+        <svg aria-hidden="true" width="48" height="52" viewBox="0 0 52 56" fill="#F3F6FA" stroke="#DCE3EC" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 14px; top: 16px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <div><div style="font-weight: 600; font-size: 16px; color: #0B2251">Nada de software genérico</div><div style="font-size: 14px; line-height: 21px; color: #5B6577">Partimos de tus procesos, no de una plantilla.</div></div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 14px">
+      <div style="position: relative; width: 48px; height: 52px; flex: none">
+        <svg aria-hidden="true" width="48" height="52" viewBox="0 0 52 56" fill="#F3F6FA" stroke="#DCE3EC" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 14px; top: 16px"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+      </div>
+      <div><div style="font-weight: 600; font-size: 16px; color: #0B2251">Crece con tu empresa</div><div style="font-size: 14px; line-height: 21px; color: #5B6577">Sumamos funciones a medida que las vas necesitando.</div></div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 14px">
+      <div style="position: relative; width: 48px; height: 52px; flex: none">
+        <svg aria-hidden="true" width="48" height="52" viewBox="0 0 52 56" fill="#F3F6FA" stroke="#DCE3EC" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 14px; top: 16px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div><div style="font-weight: 600; font-size: 16px; color: #0B2251">Soporte cercano</div><div style="font-size: 14px; line-height: 21px; color: #5B6577">Hablás directo con quien desarrolla tu sistema.</div></div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 14px">
+      <div style="position: relative; width: 48px; height: 52px; flex: none">
+        <svg aria-hidden="true" width="48" height="52" viewBox="0 0 52 56" fill="#F3F6FA" stroke="#DCE3EC" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 14px; top: 16px"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div><div style="font-weight: 600; font-size: 16px; color: #0B2251">Equipo en Paraguay</div><div style="font-size: 14px; line-height: 21px; color: #5B6577">Conocemos cómo trabajan las empresas locales.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SISTEMAS ============ -->
+<section id="sistemas" style="max-width: 1180px; margin: 0 auto; padding: 72px 24px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px">
+  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+    <span style="display: inline-flex; align-items: center; gap: 8px; background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; color: #0B2251"><span style="width: 8px; height: 8px; border-radius: 999px; background: #00D2EF"></span>Sistemas a medida</span>
+    <h2 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 48px); line-height: 1.12; letter-spacing: -0.015em; color: #0B2251">¿Qué sistema necesita <span style="color: #0093AD">tu negocio?</span></h2>
+    <p style="margin: 0; max-width: 600px; font-size: 18px; line-height: 28px; color: #5B6577">Estos son algunos de los sistemas que desarrollamos. Si ya usás otras herramientas, las conectamos.</p>
+  </div>
+
+  <!-- ERP destacado -->
+  <div class="pad-m" style="position: relative; background: #0B2251; border-radius: 28px; padding: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; overflow: hidden">
+    <svg aria-hidden="true" width="300" height="300" viewBox="0 0 52 56" fill="none" stroke="#24407A" stroke-width="1.4" stroke-linejoin="round" style="position: absolute; right: -60px; top: -40px"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/><path d="M26 13l13.5 7.8v15.4L26 44l-13.5-7.8V20.8z"/></svg>
+    <div style="position: relative; flex: 1 1 380px; display: flex; flex-direction: column; gap: 16px">
+      <span style="align-self: flex-start; font-size: 13px; font-weight: 600; color: #0B2251; background: #00D2EF; border-radius: 8px; padding: 5px 12px">El más completo</span>
+      <h3 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 34px; line-height: 40px; color: #FFFFFF">ERP a medida de <span style="color: #00D2EF">tu negocio</span></h3>
+      <p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 27px; color: #B9C6DD">Ventas, compras, stock y administración integrados en un solo sistema, armado según cómo funciona tu empresa.</p>
+      <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; background: #00D2EF; color: #0B2251; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px; min-height: 48px; box-sizing: border-box; margin-top: 8px">Quiero mi ERP
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <!-- módulos conectados (estilo referencia: nodos al centro) -->
+    <div aria-hidden="true" style="position: relative; flex: 1 1 340px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; font-weight: 600; font-size: 15px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>Ventas</div>
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; font-weight: 600; font-size: 15px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Compras</div>
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; font-weight: 600; font-size: 15px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>Stock</div>
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; font-weight: 600; font-size: 15px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>Administración</div>
+      <div style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 10px; color: #B9C6DD; font-size: 14px; font-weight: 500">
+        <span style="width: 9px; height: 9px; border-radius: 999px; background: #00D2EF"></span>
+        <span style="flex: 0 1 60px; height: 2px; background: #00D2EF"></span>
+        Todo conectado, en una sola pantalla
+        <span style="flex: 0 1 60px; height: 2px; background: #00D2EF"></span>
+        <span style="width: 9px; height: 9px; border-radius: 999px; background: #00D2EF"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- grilla de sistemas -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
+    <div style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+      <span style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE3EC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0093AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+      <h3 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #0B2251">Veterinarias</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #5B6577">Turnos, historias clínicas y atención de pacientes.</p>
+    </div>
+    <div style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+      <span style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE3EC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0093AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+      <h3 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #0B2251">E-commerce</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #5B6577">Tu tienda online con pedidos y pagos en un mismo lugar.</p>
+    </div>
+    <div style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+      <span style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE3EC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0093AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+      <h3 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #0B2251">Punto de venta</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #5B6577">Cobros y caja diaria del local, rápido y sin planillas.</p>
+    </div>
+    <div style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+      <span style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE3EC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0093AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+      <h3 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #0B2251">CRM</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #5B6577">Clientes y oportunidades de venta con seguimiento ordenado.</p>
+    </div>
+    <div style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+      <span style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE3EC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0093AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+      <h3 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #0B2251">Recursos Humanos</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #5B6577">Legajos, asistencia y datos del personal en orden.</p>
+    </div>
+    <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="background: #FFFFFF; border: 2px dashed #00D2EF; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+      <span style="width: 52px; height: 52px; border-radius: 16px; background: #00D2EF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+      <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #0B2251">¿Otro rubro?</span>
+      <span style="font-size: 15px; line-height: 24px; color: #5B6577">Contanos qué necesitás y lo desarrollamos.</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ EJEMPLO E-COMMERCE ============ -->
+<section id="ecommerce" style="background: #F3F6FA">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+    <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+      <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; color: #0B2251"><span style="width: 8px; height: 8px; border-radius: 999px; background: #00D2EF"></span>Ejemplo de e-commerce</span>
+      <h2 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.14; letter-spacing: -0.015em; color: #0B2251">Así puede verse <span style="color: #0093AD">tu tienda online</span></h2>
+      <p style="margin: 0; font-size: 17px; line-height: 27px; color: #5B6577">Una tienda pensada para tu marca y tus productos, con un diseño propio y no una plantilla repetida.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Catálogo por categorías y talles</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Carrito y compra en pocos pasos</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Cada pedido llega directo a tu sistema</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Botón de WhatsApp para atender a tus clientes</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Se ve bien en la compu y en el celular</li>
+      </ul>
+      <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; background: #0B2251; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px; min-height: 48px; box-sizing: border-box; margin-top: 6px">Quiero mi tienda online
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <span style="font-size: 13px; color: #5B6577">Tienda y marca de ejemplo, creadas para mostrar el diseño.</span>
+    </div>
+
+    <!-- navegador con la tienda: recorrido de compra -->
+    <div style="flex: 0 1 704px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+    <figure aria-label="Video de una compra en una tienda online de ejemplo: se agregan productos al carrito y se confirma el pedido" style="position: relative; margin: 0">
+      <div style="background: #FFFFFF; border: 1px solid #DCE3EC; border-radius: 20px; box-shadow: 0 30px 70px rgba(11,34,81,0.18); overflow: hidden">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #DCE3EC">
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #DCE3EC"></span>
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #DCE3EC"></span>
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #DCE3EC"></span>
+          <span style="margin-left: 12px; flex: 1; max-width: 300px; font-size: 12px; font-weight: 500; color: #5B6577; background: #F3F6FA; border-radius: 8px; padding: 4px 12px">tutienda.com.py</span>
+        </div>
+        <div aria-hidden="true" id="marco" class="marco" style="position: relative; height: 440px; overflow: hidden; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #15171A">
+          <div class="tienda" style="width: 1280px; height: 2200px">
+            
+
+<div style="position: relative; width: 1280px; height: 2200px; overflow: hidden; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #15171A; display: flex; flex-direction: column">
+
+  <!-- barra de anuncio -->
+  <div style="height: 40px; flex: none; background: #15171A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 28px; font-size: 13px; font-weight: 500">
+    <span style="display: flex; align-items: center; gap: 8px"><span style="width: 7px; height: 7px; border-radius: 999px; background: #C6F04A"></span>Envío a todo el país</span>
+    <span style="color: #6B6F76">/</span>
+    <span>Cambios fáciles en 15 días</span>
+    <span style="color: #6B6F76">/</span>
+    <span>Atención por WhatsApp</span>
+  </div>
+
+  <!-- encabezado -->
+  <div style="height: 84px; flex: none; padding: 0 40px; display: flex; align-items: center; gap: 32px; border-bottom: 1px solid #E7E4DC">
+    <div style="display: flex; align-items: center; gap: 2px; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-style: italic; font-size: 38px; letter-spacing: 0.02em; color: #15171A">RUMBO<span style="display: inline-block; width: 12px; height: 12px; background: #C6F04A; transform: skewX(-12deg); margin-left: 4px; margin-top: 12px"></span></div>
+    <div style="flex: 1; display: flex; align-items: center; gap: 10px; background: #F1EEE7; border-radius: 999px; padding: 12px 20px; font-size: 14px; color: #6B6F76">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Buscá zapatillas, remeras, accesorios…
+    </div>
+    <div style="display: flex; align-items: center; gap: 22px">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg>
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+      <span style="position: relative; display: flex; align-items: center; gap: 10px; background: #15171A; color: #FFFFFF; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        Carrito
+        <span style="width: 22px; height: 22px; border-radius: 999px; background: #C6F04A; color: #15171A; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- categorías -->
+  <div style="height: 56px; flex: none; padding: 0 40px; display: flex; align-items: center; gap: 30px; font-size: 14px; font-weight: 600">
+    <span style="border-bottom: 2px solid #15171A; padding-bottom: 4px">Novedades</span>
+    <span>Calzados</span><span>Prendas</span><span>Accesorios</span><span>Running</span><span>Training</span>
+    <span style="margin-left: auto; background: #C6F04A; border-radius: 999px; padding: 7px 16px">Ofertas</span>
+  </div>
+
+  <!-- hero -->
+  <div style="flex: none; padding: 0 32px">
+    <div style="position: relative; height: 540px; background: #15171A; border-radius: 28px; overflow: hidden; display: flex; align-items: stretch">
+      <div style="position: relative; flex: 1; padding: 0 0 0 64px; display: flex; flex-direction: column; justify-content: center; gap: 22px">
+        <span style="align-self: flex-start; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #15171A; background: #C6F04A; border-radius: 999px; padding: 8px 16px">Nueva colección running</span>
+        <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 124px; line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: #FFFFFF">Corré más<br><span style="color: #C6F04A; font-style: italic">lejos</span></h1>
+        <p style="margin: 0; max-width: 430px; font-size: 18px; line-height: 28px; color: #C9CCD1">Calzado y ropa deportiva para entrenar todos los días, con envío a todo el país.</p>
+        <div style="display: flex; gap: 12px">
+          <span style="display: inline-flex; align-items: center; gap: 10px; background: #C6F04A; color: #15171A; border-radius: 999px; padding: 16px 28px; font-weight: 700; font-size: 15px">Comprar ahora
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span style="display: inline-flex; align-items: center; color: #FFFFFF; border: 1px solid #4A4E55; border-radius: 999px; padding: 16px 26px; font-weight: 600; font-size: 15px">Ver colección</span>
+        </div>
+        <div style="display: flex; gap: 8px; padding-top: 12px"><span style="width: 28px; height: 6px; border-radius: 999px; background: #C6F04A"></span><span style="width: 6px; height: 6px; border-radius: 999px; background: #4A4E55"></span><span style="width: 6px; height: 6px; border-radius: 999px; background: #4A4E55"></span></div>
+      </div>
+      <div style="position: relative; flex: 0 0 560px">
+        <img src="img/hero.jpg" alt="Corredor atándose una zapatilla de running" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block">
+        <div style="position: absolute; left: 24px; bottom: 28px; background: #FFFFFF; border-radius: 18px; padding: 14px 18px; box-shadow: 0 16px 36px rgba(0,0,0,0.25); display: flex; align-items: center; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <span style="font-size: 12px; font-weight: 600; color: #6B6F76">Zapatilla Aero Run</span>
+            <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28px; color: #15171A">Gs. 489.000</span>
+          </div>
+          <span style="width: 42px; height: 42px; border-radius: 999px; background: #15171A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- comprá por categoría -->
+  <div style="flex: none; padding: 72px 40px 0; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 56px; line-height: 1; text-transform: uppercase">Comprá por categoría</h2>
+      <span style="font-size: 14px; font-weight: 600; border-bottom: 2px solid #C6F04A">Ver todo</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+      <div style="position: relative; height: 330px; border-radius: 24px; background: #15171A; color: #FFFFFF; padding: 28px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between">
+        <img src="img/cat-hombres.jpg" alt="Hombre corriendo en una pista" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,23,26,0.55) 0%, rgba(21,23,26,0) 38%, rgba(21,23,26,0) 55%, rgba(21,23,26,0.75) 100%)"></div>
+        <span style="position: relative; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 46px; line-height: 1; text-transform: uppercase">Hombres</span>
+        <span style="position: relative; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600">Calzado · Prendas · Accesorios <span style="width: 34px; height: 34px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </div>
+      <div style="position: relative; height: 330px; border-radius: 24px; background: #15171A; color: #FFFFFF; padding: 28px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between">
+        <img src="img/cat-mujeres.jpg" alt="Mujer entrenando con una mancuerna" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,23,26,0.55) 0%, rgba(21,23,26,0) 38%, rgba(21,23,26,0) 55%, rgba(21,23,26,0.75) 100%)"></div>
+        <span style="position: relative; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 46px; line-height: 1; text-transform: uppercase">Mujeres</span>
+        <span style="position: relative; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600">Calzado · Prendas · Accesorios <span style="width: 34px; height: 34px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </div>
+      <div style="position: relative; height: 330px; border-radius: 24px; background: #15171A; color: #FFFFFF; padding: 28px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between">
+        <img src="img/cat-ninos.jpg" alt="Nene con ropa deportiva y una pelota" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,23,26,0.55) 0%, rgba(21,23,26,0) 38%, rgba(21,23,26,0) 55%, rgba(21,23,26,0.75) 100%)"></div>
+        <span style="position: relative; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 46px; line-height: 1; text-transform: uppercase">Niños</span>
+        <span style="position: relative; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600">Calzado · Prendas · Accesorios <span style="width: 34px; height: 34px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- últimos ingresos -->
+  <div style="flex: none; padding: 72px 40px 0; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 56px; line-height: 1; text-transform: uppercase">Últimos ingresos</h2>
+      <div style="display: flex; gap: 10px">
+        <span style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #E7E4DC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>
+        <span style="width: 44px; height: 44px; border-radius: 999px; background: #15171A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+      <!-- producto 1 -->
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="position: relative; height: 300px; border-radius: 22px; background: #ECECEC; overflow: hidden; display: flex; align-items: center; justify-content: center">
+          <span style="position: absolute; z-index: 1; left: 14px; top: 14px; background: #C6F04A; border-radius: 8px; padding: 5px 10px; font-size: 12px; font-weight: 700">Nuevo</span>
+          <span style="position: absolute; z-index: 1; right: 14px; top: 14px; width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+          <img src="img/prod-zapatilla.jpg" alt="Zapatilla de running gris con detalles lima" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 12px; font-weight: 500; color: #6B6F76">Running · Calzado</span>
+          <span style="font-size: 16px; font-weight: 600">Zapatilla Aero Run</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px">Gs. 489.000</span>
+          <span id="btnA" style="width: 42px; height: 42px; border-radius: 999px; background: #15171A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+      </div>
+      <!-- producto 2 -->
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="position: relative; height: 300px; border-radius: 22px; background: #ECECEC; overflow: hidden; display: flex; align-items: center; justify-content: center">
+          <span style="position: absolute; z-index: 1; left: 14px; top: 14px; background: #E8613C; color: #15171A; border-radius: 8px; padding: 5px 10px; font-size: 12px; font-weight: 700">-20%</span>
+          <span style="position: absolute; z-index: 1; right: 14px; top: 14px; width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+          <img src="img/prod-remera.jpg" alt="Remera azul marino" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 12px; font-weight: 500; color: #6B6F76">Training · Prendas</span>
+          <span style="font-size: 16px; font-weight: 600">Remera Essential</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px">Gs. 129.000</span><span style="font-size: 13px; color: #6B6F76; text-decoration: line-through">Gs. 159.000</span></span>
+          <span style="width: 42px; height: 42px; border-radius: 999px; background: #15171A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+      </div>
+      <!-- producto 3 -->
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="position: relative; height: 300px; border-radius: 22px; background: #ECECEC; overflow: hidden; display: flex; align-items: center; justify-content: center">
+          <span style="position: absolute; z-index: 1; right: 14px; top: 14px; width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+          <img src="img/prod-short.jpg" alt="Short deportivo negro" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 12px; font-weight: 500; color: #6B6F76">Training · Prendas</span>
+          <span style="font-size: 16px; font-weight: 600">Short Flex Training</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px">Gs. 149.000</span>
+          <span style="width: 42px; height: 42px; border-radius: 999px; background: #15171A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+      </div>
+      <!-- producto 4 -->
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="position: relative; height: 300px; border-radius: 22px; background: #ECECEC; overflow: hidden; display: flex; align-items: center; justify-content: center">
+          <span style="position: absolute; z-index: 1; left: 14px; top: 14px; background: #C6F04A; border-radius: 8px; padding: 5px 10px; font-size: 12px; font-weight: 700">Nuevo</span>
+          <span style="position: absolute; z-index: 1; right: 14px; top: 14px; width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+          <img src="img/prod-gorra.jpg" alt="Gorra negra" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 12px; font-weight: 500; color: #6B6F76">Accesorios</span>
+          <span style="font-size: 16px; font-weight: 600">Gorra Trail Pro</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px">Gs. 99.000</span>
+          <span id="btnB" style="width: 42px; height: 42px; border-radius: 999px; background: #15171A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F04A" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- beneficios -->
+  <div style="flex: none; margin: 72px 40px 0; border-top: 1px solid #E7E4DC; border-bottom: 1px solid #E7E4DC; padding: 32px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+    <div style="display: flex; align-items: center; gap: 14px"><span style="width: 48px; height: 48px; border-radius: 14px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><div><div style="font-weight: 700; font-size: 15px">Compra segura</div><div style="font-size: 13px; color: #6B6F76">Pagos protegidos</div></div></div>
+    <div style="display: flex; align-items: center; gap: 14px"><span style="width: 48px; height: 48px; border-radius: 14px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span><div><div style="font-weight: 700; font-size: 15px">Envío a todo el país</div><div style="font-size: 13px; color: #6B6F76">Seguí tu pedido</div></div></div>
+    <div style="display: flex; align-items: center; gap: 14px"><span style="width: 48px; height: 48px; border-radius: 14px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></span><div><div style="font-weight: 700; font-size: 15px">Cambios fáciles</div><div style="font-size: 13px; color: #6B6F76">Hasta 15 días</div></div></div>
+    <div style="display: flex; align-items: center; gap: 14px"><span style="width: 48px; height: 48px; border-radius: 14px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></span><div><div style="font-weight: 700; font-size: 15px">Atención por WhatsApp</div><div style="font-size: 13px; color: #6B6F76">Te asesoramos</div></div></div>
+  </div>
+
+  <!-- pie -->
+  <div style="flex: 1; margin-top: 48px; background: #15171A; color: #FFFFFF; padding: 44px 40px; display: flex; justify-content: space-between; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-style: italic; font-size: 38px; letter-spacing: 0.02em">RUMBO<span style="display: inline-block; width: 12px; height: 12px; background: #C6F04A; transform: skewX(-12deg); margin-left: 4px"></span></div>
+      <span style="font-size: 14px; color: #A9ADB4">Tienda de ejemplo · Marca ficticia</span>
+    </div>
+    <div style="display: flex; gap: 72px; font-size: 14px; color: #A9ADB4">
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="color: #FFFFFF; font-weight: 700">Categorías</span><span>Calzados</span><span>Prendas</span><span>Accesorios</span><span>Ofertas</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="color: #FFFFFF; font-weight: 700">Mi cuenta</span><span>Mis pedidos</span><span>Lista de deseos</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><span style="color: #FFFFFF; font-weight: 700">Ayuda</span><span>Envíos</span><span>Cambios</span><span>Contacto</span></div>
+    </div>
+  </div>
+
+  <!-- botón flotante WhatsApp -->
+  <div aria-hidden="true" style="position: absolute; right: 32px; top: 640px; width: 60px; height: 60px; border-radius: 999px; background: #C6F04A; box-shadow: 0 12px 28px rgba(21,23,26,0.25); display: flex; align-items: center; justify-content: center">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+  </div>
+</div>
+
+          </div>
+
+          <!-- productos agregados (check sobre el botón +) -->
+          <span class="ok1" style="position: absolute; left: calc(var(--s) * var(--ax) - 12px); top: calc((var(--by) - var(--t)) * var(--s) - 12px); width: 24px; height: 24px; border-radius: 999px; background: #C6F04A; box-shadow: 0 0 0 3px #15171A; display: flex; align-items: center; justify-content: center; opacity: 0"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="ok2" style="position: absolute; left: calc(var(--s) * var(--bx) - 12px); top: calc((var(--by) - var(--t)) * var(--s) - 12px); width: 24px; height: 24px; border-radius: 999px; background: #C6F04A; box-shadow: 0 0 0 3px #15171A; display: flex; align-items: center; justify-content: center; opacity: 0"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+
+          <div class="toast1" style="position: absolute; left: 50%; top: 14px; opacity: 0; display: flex; align-items: center; gap: 10px; background: #15171A; color: #FFFFFF; border-radius: 999px; padding: 8px 16px 8px 8px; font-size: 12px; font-weight: 600; white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><span style="width: 22px; height: 22px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Agregado al carrito · Zapatilla Aero Run</div>
+          <div class="toast2" style="position: absolute; left: 50%; top: 14px; opacity: 0; display: flex; align-items: center; gap: 10px; background: #15171A; color: #FFFFFF; border-radius: 999px; padding: 8px 16px 8px 8px; font-size: 12px; font-weight: 600; white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><span style="width: 22px; height: 22px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Agregado al carrito · Gorra Trail Pro</div>
+
+          <!-- velo + carrito lateral -->
+          <div class="velo" style="position: absolute; inset: 0; background: rgba(21,23,26,0.45); opacity: 0"></div>
+          <div class="carrito" style="position: absolute; top: 0; right: 0; bottom: 0; width: var(--dw); background: #FFFFFF; box-shadow: -16px 0 40px rgba(0,0,0,0.2); padding: 16px 18px; box-sizing: border-box; display: flex; flex-direction: column; transform: translateX(105%)">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 6px">
+              <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase">Tu carrito (2)</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid #EEECE6">
+                <img src="img/prod-zapatilla.jpg" alt="Zapatilla Aero Run" style="width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex: none">
+                <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600">Zapatilla Aero Run</span><span style="font-size: 11px; color: #6B6F76">Talle 41 · Cant. 1</span></div>
+                <span style="font-size: 12px; font-weight: 700; white-space: nowrap">Gs. 489.000</span>
+              </div>
+            <div style="display: flex; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid #EEECE6">
+                <img src="img/prod-gorra.jpg" alt="Gorra Trail Pro" style="width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex: none">
+                <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600">Gorra Trail Pro</span><span style="font-size: 11px; color: #6B6F76">Talle único · Cant. 1</span></div>
+                <span style="font-size: 12px; font-weight: 700; white-space: nowrap">Gs. 99.000</span>
+              </div>
+            <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0; font-size: 12px">
+              <div style="display: flex; justify-content: space-between; color: #6B6F76"><span>Subtotal</span><span>Gs. 588.000</span></div>
+              <div style="display: flex; justify-content: space-between; color: #6B6F76"><span>Envío</span><span>Gs. 25.000</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 800; padding-top: 4px"><span>Total</span><span>Gs. 613.000</span></div>
+            </div>
+            <div style="display: flex; gap: 6px; font-size: 11px; font-weight: 600">
+              <span style="flex: 1; text-align: center; border: 2px solid #15171A; border-radius: 8px; padding: 6px">Tarjeta</span>
+              <span style="flex: 1; text-align: center; border: 1px solid #E7E4DC; border-radius: 8px; padding: 7px; color: #6B6F76">Transferencia</span>
+            </div>
+            <div style="margin-top: auto; position: relative; height: 40px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">
+              Finalizar compra
+              <span class="cargando" style="position: absolute; inset: 0; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center; gap: 8px; opacity: 0"><span class="giro" style="width: 14px; height: 14px; border-radius: 999px; border: 2px solid #15171A; border-top-color: transparent; box-sizing: border-box"></span>Procesando…</span>
+            </div>
+          </div>
+
+          <!-- compra confirmada -->
+          <div class="gracias" style="position: absolute; inset: 0; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; opacity: 0">
+            <span style="width: 64px; height: 64px; border-radius: 999px; background: #C6F04A; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#15171A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; text-transform: uppercase">¡Compra confirmada!</span>
+            <span style="font-size: 14px; color: #4A4E55">Pedido #1043 · 2 productos · Gs. 613.000</span>
+            <div style="display: flex; gap: 10px; align-items: center; background: #F1EEE7; border-radius: 14px; padding: 10px 14px; margin-top: 4px">
+              <img src="img/prod-zapatilla.jpg" alt="" style="width: 40px; height: 40px; border-radius: 8px; object-fit: cover">
+              <img src="img/prod-gorra.jpg" alt="" style="width: 40px; height: 40px; border-radius: 8px; object-fit: cover">
+              <span style="font-size: 12px; color: #4A4E55; text-align: left">Te avisamos cuando<br>tu pedido salga</span>
+            </div>
+            <span style="margin-top: 6px; font-size: 13px; font-weight: 700; background: #15171A; color: #FFFFFF; border-radius: 999px; padding: 11px 22px">Seguir comprando</span>
+          </div>
+
+          <!-- cursor -->
+          <svg class="cursor" width="22" height="26" viewBox="0 0 22 26" style="position: absolute; left: 0; top: 0; opacity: 0; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35))"><path d="M2 2 L2 21 L7 16.5 L10.5 24 L14 22.5 L10.5 15 L17 15 Z" fill="#FFFFFF" stroke="#15171A" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <!-- notificación: el pedido llega al sistema -->
+      <div class="flota pedido" style="position: absolute; left: -40px; bottom: 36px; width: 260px; background: #0B2251; border-radius: 16px; box-shadow: 0 20px 44px rgba(11,34,81,0.3); padding: 16px; display: flex; align-items: center; gap: 12px; opacity: 0">
+        <span style="width: 40px; height: 40px; border-radius: 12px; background: #00D2EF; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 13px; font-weight: 600; color: #FFFFFF">Nuevo pedido #1043</span>
+          <span style="font-size: 12px; color: #B9C6DD">2 productos · Gs. 613.000</span>
+        </div>
+      </div>
+    </figure>
+    <!-- pasos sincronizados con el video -->
+    <ol aria-label="Pasos de la compra" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px">
+      <li class="paso1" style="display: flex; align-items: center; gap: 8px; border: 1px solid #DCE3EC; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; background: #FFFFFF; color: #5B6577">1 · Elegís</li>
+      <li class="paso2" style="display: flex; align-items: center; gap: 8px; border: 1px solid #DCE3EC; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; background: #FFFFFF; color: #5B6577">2 · Agregás al carrito</li>
+      <li class="paso3" style="display: flex; align-items: center; gap: 8px; border: 1px solid #DCE3EC; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; background: #FFFFFF; color: #5B6577">3 · Comprás</li>
+    </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS (proyecto + pasos) ============ -->
+<section id="como" style="background: #FFFFFF">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+    <!-- tablero del proyecto -->
+    <div aria-hidden="true" class="pad-m" style="position: relative; flex: 1 1 420px; min-width: 0; background: #0B2251; border-radius: 28px; padding: 36px; box-sizing: border-box; overflow: hidden">
+      <svg width="260" height="280" viewBox="0 0 52 56" fill="none" stroke="#24407A" stroke-width="1.4" stroke-linejoin="round" style="position: absolute; right: -70px; top: -60px"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/><path d="M26 13l13.5 7.8v15.4L26 44l-13.5-7.8V20.8z"/></svg>
+      <div style="position: relative; background: #FFFFFF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+          <div>
+            <div style="font-size: 12px; font-weight: 500; color: #5B6577">Tu proyecto</div>
+            <div style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251">Sistema de gestión</div>
+          </div>
+          <span style="font-size: 12px; font-weight: 600; color: #0B2251; background: #F3F6FA; border-radius: 999px; padding: 6px 12px">En curso</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: #0B2251; font-weight: 600"><span>Avance</span><span>60%</span></div>
+          <div style="height: 10px; border-radius: 999px; background: #F3F6FA; overflow: hidden"><div style="width: 60%; height: 100%; border-radius: 999px; background: #00D2EF"></div></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Relevamiento de procesos</div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #0B2251"><span style="width: 24px; height: 24px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center; flex: none"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Propuesta aprobada</div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #0B2251; font-weight: 600"><span style="width: 24px; height: 24px; border-radius: 999px; border: 2px solid #00D2EF; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><span style="width: 8px; height: 8px; border-radius: 999px; background: #00D2EF"></span></span>Desarrollo</div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #5B6577"><span style="width: 24px; height: 24px; border-radius: 999px; border: 2px solid #DCE3EC; box-sizing: border-box; flex: none"></span>Implementación y capacitación</div>
+        </div>
+      </div>
+      <div style="position: relative; display: flex; gap: 14px; margin-top: 16px">
+        <div style="flex: 1; background: #13306A; border: 1px solid #24407A; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span style="font-size: 13px; font-weight: 600; color: #FFFFFF">Comunicación directa</span>
+        </div>
+        <div style="flex: 1; background: #13306A; border: 1px solid #24407A; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+          <span style="font-size: 13px; font-weight: 600; color: #FFFFFF">Mejoras continuas</span>
+        </div>
+      </div>
+    </div>
+    <!-- pasos -->
+    <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5B6577">Cómo trabajamos</span>
+        <h2 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.14; letter-spacing: -0.015em; color: #0B2251">De tu idea a un sistema <span style="color: #0093AD">funcionando</span></h2>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 22px">
+        <li style="display: flex; gap: 18px; align-items: flex-start">
+          <span style="position: relative; width: 46px; height: 50px; flex: none"><svg aria-hidden="true" width="46" height="50" viewBox="0 0 52 56" fill="#0B2251" stroke="#0B2251" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg><span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 15px; color: #00D2EF">01</span></span>
+          <div><div style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251; margin-bottom: 4px">Entendemos tu negocio</div><div style="font-size: 15px; line-height: 24px; color: #5B6577">Conversamos para conocer tus procesos, tus problemas y lo que querés lograr.</div></div>
+        </li>
+        <li style="display: flex; gap: 18px; align-items: flex-start">
+          <span style="position: relative; width: 46px; height: 50px; flex: none"><svg aria-hidden="true" width="46" height="50" viewBox="0 0 52 56" fill="#0B2251" stroke="#0B2251" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg><span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 15px; color: #00D2EF">02</span></span>
+          <div><div style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251; margin-bottom: 4px">Diseñamos la solución</div><div style="font-size: 15px; line-height: 24px; color: #5B6577">Te presentamos una propuesta clara de lo que vamos a desarrollar.</div></div>
+        </li>
+        <li style="display: flex; gap: 18px; align-items: flex-start">
+          <span style="position: relative; width: 46px; height: 50px; flex: none"><svg aria-hidden="true" width="46" height="50" viewBox="0 0 52 56" fill="#0B2251" stroke="#0B2251" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg><span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 15px; color: #00D2EF">03</span></span>
+          <div><div style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251; margin-bottom: 4px">Desarrollamos e implementamos</div><div style="font-size: 15px; line-height: 24px; color: #5B6577">Construimos el sistema y lo ponemos en marcha junto a tu equipo.</div></div>
+        </li>
+        <li style="display: flex; gap: 18px; align-items: flex-start">
+          <span style="position: relative; width: 46px; height: 50px; flex: none"><svg aria-hidden="true" width="46" height="50" viewBox="0 0 52 56" fill="#00D2EF" stroke="#00D2EF" stroke-width="2" stroke-linejoin="round"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg><span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: 15px; color: #0B2251">04</span></span>
+          <div><div style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251; margin-bottom: 4px">Acompañamos y mejoramos</div><div style="font-size: 15px; line-height: 24px; color: #5B6577">Seguimos a tu lado para ajustar y hacer crecer la solución con tu empresa.</div></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SITUACIONES (fondo marino) ============ -->
+<section aria-label="Situaciones frecuentes" style="background: #0B2251; position: relative; overflow: hidden">
+  <svg aria-hidden="true" width="380" height="320" viewBox="0 0 380 320" style="position: absolute; right: -40px; top: -30px; opacity: 0.7">
+    <g fill="none" stroke="#24407A" stroke-width="2" stroke-linejoin="round">
+      <path d="M90 20l50 29v58l-50 29-50-29V49z"/>
+      <path d="M190 20l50 29v58l-50 29-50-29V49z"/>
+      <path d="M290 20l50 29v58l-50 29-50-29V49z"/>
+      <path d="M240 107l50 29v58l-50 29-50-29v-58z"/>
+      <path d="M340 107l50 29v58l-50 29-50-29v-58z"/>
+    </g>
+  </svg>
+  <div style="position: relative; max-width: 1180px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 44px">
+    <h2 style="margin: 0; max-width: 640px; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.14; letter-spacing: -0.015em; color: #FFFFFF">¿Te suena alguna de estas <span style="color: #00D2EF">situaciones?</span></h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px">
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 18px">
+        <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>
+        <span style="font-size: 17px; line-height: 25px; font-weight: 600; color: #FFFFFF">La información está en planillas y cuadernos</span>
+      </div>
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 18px">
+        <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+        <span style="font-size: 17px; line-height: 25px; font-weight: 600; color: #FFFFFF">Usás un programa que no se adapta a tu negocio</span>
+      </div>
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 18px">
+        <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+        <span style="font-size: 17px; line-height: 25px; font-weight: 600; color: #FFFFFF">Cuesta saber cómo van las ventas o el stock</span>
+      </div>
+      <div style="background: #13306A; border: 1px solid #24407A; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 18px">
+        <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00D2EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span style="font-size: 17px; line-height: 25px; font-weight: 600; color: #FFFFFF">Cada área trabaja con su propia herramienta</span>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid #24407A; padding-top: 32px">
+      <p style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 22px; line-height: 30px; color: #FFFFFF">Un sistema propio te da el control de tu empresa en una sola pantalla.</p>
+      <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: #00D2EF; color: #0B2251; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px; min-height: 48px; box-sizing: border-box">Contanos tu caso
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS ============ -->
+<section id="preguntas" style="max-width: 1180px; margin: 0 auto; padding: 96px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px">
+  <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px">
+    <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5B6577">Preguntas frecuentes</span>
+    <h2 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.14; letter-spacing: -0.015em; color: #0B2251">Lo que suelen <span style="color: #0093AD">preguntarnos</span></h2>
+    <p style="margin: 0; font-size: 16px; line-height: 25px; color: #5B6577">¿Te quedó alguna duda? Escribinos y lo vemos juntos.</p>
+    <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; color: #0B2251; text-decoration: none; font-weight: 600; font-size: 15px; border: 1px solid #DCE3EC; border-radius: 999px; padding: 12px 20px; min-height: 44px; box-sizing: border-box">Hacer una pregunta
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+  <div style="flex: 2 1 520px; display: flex; flex-direction: column; gap: 14px">
+    <details open="" style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 16px; padding: 22px 24px">
+      <summary style="cursor: pointer; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251">¿Tengo que dejar de usar los programas que ya tengo?</summary>
+      <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: #5B6577">No necesariamente. Vemos qué herramientas usás hoy y, si conviene, las conectamos con el nuevo sistema.</p>
+    </details>
+    <details style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 16px; padding: 22px 24px">
+      <summary style="cursor: pointer; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251">¿Cuánto tiempo lleva desarrollar un sistema?</summary>
+      <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: #5B6577">Depende del alcance. En la propuesta te indicamos las etapas y los plazos de cada una.</p>
+    </details>
+    <details style="background: #F3F6FA; border: 1px solid #DCE3EC; border-radius: 16px; padding: 22px 24px">
+      <summary style="cursor: pointer; font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 18px; color: #0B2251">¿Cuánto cuesta?</summary>
+      <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: #5B6577">Cada proyecto es distinto. Primero conversamos sobre lo que necesitás y después te enviamos una propuesta.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="contacto" style="max-width: 1180px; margin: 0 auto; padding: 0 24px 96px; box-sizing: border-box">
+  <div class="pad-m" style="position: relative; background: #0B2251; border-radius: 28px; padding: 56px 48px; overflow: hidden; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px">
+    <svg aria-hidden="true" width="240" height="260" viewBox="0 0 52 56" fill="none" stroke="#24407A" stroke-width="1.4" stroke-linejoin="round" style="position: absolute; left: -70px; bottom: -90px"><path d="M26 3l22 12.7v24.6L26 53 4 40.3V15.7z"/></svg>
+    <div style="position: relative; flex: 1 1 420px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: Montserrat, system-ui, sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; color: #FFFFFF">Contanos qué querés <span style="color: #00D2EF">mejorar</span> en tu empresa.</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 27px; color: #B9C6DD">Te ayudamos a encontrar la solución tecnológica que se adapta a tu negocio.</p>
+    </div>
+    <div style="position: relative; display: flex; align-items: center; gap: 18px">
+      <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: #00D2EF; color: #0B2251; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px; min-height: 54px; box-sizing: border-box">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        Escribinos por WhatsApp
+      </a>
+      <svg class="flota" aria-hidden="true" width="70" height="40" viewBox="0 0 70 40" fill="none"><path d="M4 30h30c10 0 16-6 16-16V8" stroke="#00D2EF" stroke-width="3" stroke-linecap="round"/><circle cx="50" cy="8" r="6" fill="#00D2EF"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer style="border-top: 1px solid #DCE3EC; background: #FFFFFF">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 56px 24px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 36px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <img src="img/logo.png" alt="Japo Dev" style="width: 150px; height: auto; display: block">
+        <p style="margin: 0; font-size: 14px; line-height: 22px; color: #5B6577">Desarrollo de software a medida para empresas.</p>
+        <div style="display: flex; gap: 10px">
+          <a href="https://instagram.com/japodev.py" target="_blank" rel="noopener" aria-label="Instagram de Japo Dev" style="width: 44px; height: 44px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5"/></svg></a>
+          <a href="https://facebook.com/japodev.py" target="_blank" rel="noopener" aria-label="Facebook de Japo Dev" style="width: 44px; height: 44px; border-radius: 999px; background: #0B2251; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/595982331005" target="_blank" rel="noopener" aria-label="WhatsApp de Japo Dev" style="width: 44px; height: 44px; border-radius: 999px; background: #00D2EF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B2251" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+        </div>
+      </div>
+      <nav aria-label="Navegación del pie" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; margin-bottom: 4px">Navegación</span>
+        <a href="#sistemas" style="color: #5B6577; text-decoration: none">Sistemas</a>
+        <a href="#como" style="color: #5B6577; text-decoration: none">Cómo trabajamos</a>
+        <a href="#preguntas" style="color: #5B6577; text-decoration: none">Preguntas frecuentes</a>
+      </nav>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; margin-bottom: 4px">Sistemas</span>
+        <span style="color: #5B6577">ERP a medida</span>
+        <span style="color: #5B6577">Veterinarias · E-commerce</span>
+        <span style="color: #5B6577">Punto de venta · CRM · RRHH</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-family: Montserrat, system-ui, sans-serif; font-weight: 700; font-size: 15px; color: #0B2251; margin-bottom: 4px">Contacto</span>
+        <a href="https://wa.me/595982331005" target="_blank" rel="noopener" style="color: #5B6577; text-decoration: none">+595 982 331 005</a>
+        <a href="https://instagram.com/japodev.py" target="_blank" rel="noopener" style="color: #5B6577; text-decoration: none">Instagram: @japodev.py</a>
+        <span style="color: #5B6577">Paraguay</span>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #DCE3EC; padding-top: 22px; font-size: 13px; color: #5B6577">© 2026 Japo Dev · Paraguay</div>
+  </div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var m=document.getElementById('marco'); if(!m) return;
+  var t0=m.querySelector('.tienda'), A=document.getElementById('btnA'), B=document.getElementById('btnB');
+  function ajustar(){
+    var w=m.clientWidth, h=m.clientHeight, s=Math.min(w/1280, .55);
+    m.style.setProperty('--s', s.toFixed(4));
+    var tr=t0.getBoundingClientRect(), cur=tr.width/1280;
+    function c(el){var r=el.getBoundingClientRect();return {x:(r.left+r.width/2-tr.left)/cur, y:(r.top+r.height/2-tr.top)/cur};}
+    var a=c(A), b=c(B);
+    var maxT=Math.max(0, t0.offsetHeight - h/s);
+    var t=Math.max(0, Math.min(maxT, a.y - 0.72*h/s));
+    var dw=Math.min(300, Math.round(w*0.86));
+    m.style.setProperty('--ax', a.x.toFixed(1)+'px');
+    m.style.setProperty('--bx', b.x.toFixed(1)+'px');
+    m.style.setProperty('--by', a.y.toFixed(1)+'px');
+    m.style.setProperty('--t', t.toFixed(0)+'px');
+    m.style.setProperty('--fw', w+'px');
+    m.style.setProperty('--fh', h+'px');
+    m.style.setProperty('--dw', dw+'px');
+  }
+  ajustar(); window.addEventListener('resize', ajustar);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustar);
+})();
+</script>
+</body>
+</html>
